@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CESUN Universidad - Titulación por Certificación</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --cesun-blue: #003366;
+            --cesun-gold: #FFCC00;
+            --cesun-light: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .bg-cesun {
+            background-color: var(--cesun-blue);
+        }
+        
+        .text-cesun {
+            color: var(--cesun-blue);
+        }
+        
+        .btn-cesun {
+            background-color: var(--cesun-blue);
+            color: white;
+        }
+        
+        .btn-cesun:hover {
+            background-color: #002244;
+            color: var(--cesun-gold);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .card-certification {
+            transition: transform 0.3s;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .card-certification:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: var(--cesun-blue);
+        }
+        
+        .nav-pills .nav-link {
+            color: var(--cesun-blue);
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--cesun-blue);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--cesun-gold);
+            border: 3px solid var(--cesun-blue);
+        }
+        
+        footer {
+            background-color: var(--cesun-blue);
+            color: white;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: var(--cesun-gold);
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--cesun-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+        
+        .floating-btn:hover {
+            background-color: var(--cesun-gold);
+            color: var(--cesun-blue);
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Design Improvements */
+        
+        /* Mobile First Approach */
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .hero-section .lead {
+                font-size: 1rem;
+            }
+            
+            .btn-lg {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .timeline {
+                padding-left: 30px;
+            }
+            
+            .timeline::before {
+                left: 15px;
+            }
+            
+            .timeline-item::before {
+                left: -28px;
+                width: 16px;
+                height: 16px;
+            }
+            
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.2rem;
+            }
+            
+            .card-certification:hover {
+                transform: none;
+            }
+            
+            .nav-pills {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .nav-pills .nav-link {
+                text-align: center;
+                border-radius: 0.375rem !important;
+            }
+            
+            .table-responsive {
+                font-size: 0.875rem;
+            }
+            
+            .table-responsive th,
+            .table-responsive td {
+                padding: 0.5rem 0.25rem;
+            }
+            
+            .social-icon {
+                font-size: 1.25rem;
+                margin: 0 8px;
+            }
+            
+            .navbar-brand img {
+                height: 40px !important;
+            }
+        }
+        
+        /* Tablet Styles */
+        @media (min-width: 577px) and (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline {
+                padding-left: 40px;
+            }
+            
+            .timeline::before {
+                left: 18px;
+            }
+            
+            .timeline-item::before {
+                left: -33px;
+                width: 18px;
+                height: 18px;
+            }
+            
+            .nav-pills {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .nav-pills .nav-link {
+                margin-bottom: 0.5rem;
+            }
+        }
+        
+        /* Small Desktop */
+        @media (min-width: 769px) and (max-width: 992px) {
+            .hero-section {
+                padding: 90px 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        /* Large Desktop */
+        @media (min-width: 993px) {
+            .hero-section {
+                padding: 120px 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        /* General Responsive Improvements */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .py-5 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+            
+            .mb-5 {
+                margin-bottom: 2rem !important;
+            }
+            
+            .card-body {
+                padding: 1rem;
+            }
+            
+            .accordion-button {
+                font-size: 0.9rem;
+                padding: 0.75rem;
+            }
+            
+            .accordion-body {
+                font-size: 0.875rem;
+                padding: 0.75rem;
+            }
+            
+            .form-control,
+            .form-select {
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            .display-4 {
+                font-size: 2.5rem;
+            }
+            
+            .lead {
+                font-size: 1.1rem;
+            }
+            
+            .h1, .h2, .h3, .h4, .h5, .h6 {
+                line-height: 1.3;
+            }
+        }
+        
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .card-certification:hover {
+                transform: none;
+            }
+            
+            .btn:hover {
+                transform: none;
+            }
+            
+            .floating-btn:hover {
+                transform: none;
+            }
+            
+            .social-icon:hover {
+                transform: none;
+            }
+        }
+        
+        /* High DPI Displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .hero-section {
+                background-image: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), 
+                                url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80');
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .floating-btn,
+            .navbar,
+            .btn {
+                display: none !important;
+            }
+            
+            .hero-section {
+                background: none !important;
+                color: #000 !important;
+                padding: 20px 0 !important;
+            }
+            
+            .card {
+                border: 1px solid #ddd !important;
+                box-shadow: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-cesun sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://via.placeholder.com/150x50?text=CESUN" alt="CESUN Universidad" height="50" class="d-none d-sm-block">
+                <img src="https://via.placeholder.com/120x40?text=CESUN" alt="CESUN Universidad" height="40" class="d-block d-sm-none">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-center text-lg-start">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#titulacion">Titulación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#centro-evaluador">Centro Evaluador</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#carreras">Carreras</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#conocer">CONOCER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center" id="inicio">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Titulación por Certificación en CESUN Universidad</h1>
+            <p class="lead mb-5">Obtén tu título profesional mediante certificaciones de competencias laborales reconocidas a nivel nacional</p>
+            <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3">
+                <a href="#titulacion" class="btn btn-light btn-lg px-4">Conoce más</a>
+                <a href="#contacto" class="btn btn-outline-light btn-lg px-4">Contáctanos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Titulación por Certificación -->
+    <section class="py-5" id="titulacion">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold text-cesun mb-4">Titulación por Certificación</h2>
+                    <p class="lead">Una opción innovadora para obtener tu título profesional</p>
+                    <p>En CESUN Universidad reconocemos la experiencia y conocimientos adquiridos en el ámbito laboral mediante un proceso de evaluación y certificación de competencias.</p>
+                    <p>Este modelo te permite obtener tu título universitario al demostrar que posees las competencias profesionales requeridas para tu área de estudio, a través de certificaciones reconocidas por el CONOCER.</p>
+                    <div class="d-grid gap-2 d-md-flex">
+                        <a href="#requisitos" class="btn btn-cesun me-md-2">Requisitos</a>
+                        <a href="#proceso" class="btn btn-outline-secondary">Proceso</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Certificación" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requisitos y Proceso -->
+    <section class="py-5 bg-light" id="requisitos">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-cesun">Requisitos y Proceso</h2>
+                <p class="lead">Conoce los pasos para titularte por certificación</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4" id="requisitos-detalle">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-cesun text-white">
+                            <h3 class="h5 mb-0">Requisitos</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i> Ser egresado de una licenciatura en CESUN Universidad</li>
+                                <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i> Contar con experiencia laboral relacionada con tu carrera</li>
+                                <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i> Presentar documentación comprobatoria</li>
+                                <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i> Aprobar el proceso de evaluación de competencias</li>
+                                <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i> Obtener la certificación correspondiente</li>
+                                <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i> Cubrir los requisitos administrativos y económicos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" id="proceso">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-cesun text-white">
+                            <h3 class="h5 mb-0">Proceso</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <h4>1. Asesoría inicial</h4>
+                                    <p>Revisión de documentos y orientación sobre el proceso.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4>2. Inscripción</h4>
+                                    <p>Registro formal en el programa de titulación por certificación.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4>3. Evaluación diagnóstica</h4>
+                                    <p>Determinación de competencias a evaluar y áreas de oportunidad.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4>4. Proceso de evaluación</h4>
+                                    <p>Evaluación de competencias según estándares CONOCER.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4>5. Certificación</h4>
+                                    <p>Emisión de certificado de competencias.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4>6. Titulación</h4>
+                                    <p>Obtención del título profesional.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Centro Evaluador -->
+    <section class="py-5" id="centro-evaluador">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-cesun">Centro Evaluador CESUN</h2>
+                <p class="lead">Certificamos tus competencias profesionales</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card card-certification h-100">
+                        <div class="card-body text-center">
+                            <div class="bg-cesun text-white rounded-circle p-3 d-inline-block mb-3">
+                                <i class="fas fa-award fa-2x"></i>
+                            </div>
+                            <h3 class="h5">Evaluadores Certificados</h3>
+                            <p>Contamos con personal evaluador certificado por el CONOCER para garantizar procesos confiables y válidos.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card card-certification h-100">
+                        <div class="card-body text-center">
+                            <div class="bg-cesun text-white rounded-circle p-3 d-inline-block mb-3">
+                                <i class="fas fa-clipboard-check fa-2x"></i>
+                            </div>
+                            <h3 class="h5">Estándares Nacionales</h3>
+                            <p>Nuestros procesos de evaluación se basan en los Estándares de Competencia del CONOCER.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card card-certification h-100">
+                        <div class="card-body text-center">
+                            <div class="bg-cesun text-white rounded-circle p-3 d-inline-block mb-3">
+                                <i class="fas fa-building fa-2x"></i>
+                            </div>
+                            <h3 class="h5">Infraestructura</h3>
+                            <p>Instalaciones equipadas para realizar evaluaciones tanto teóricas como prácticas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-cesun text-white">
+                            <h3 class="h5 mb-0">Ventajas de Certificarte</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="accordion" id="ventajasAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ventaja1">
+                                            Reconocimiento oficial
+                                        </button>
+                                    </h2>
+                                    <div id="ventaja1" class="accordion-collapse collapse show" data-bs-parent="#ventajasAccordion">
+                                        <div class="accordion-body">
+                                            Las certificaciones tienen validez oficial ante el CONOCER y son reconocidas en todo el territorio nacional.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ventaja2">
+                                            Movilidad laboral
+                                        </button>
+                                    </h2>
+                                    <div id="ventaja2" class="accordion-collapse collapse" data-bs-parent="#ventajasAccordion">
+                                        <div class="accordion-body">
+                                            Mejora tus oportunidades de empleo y promoción al demostrar tus competencias con un documento oficial.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ventaja3">
+                                            Ahorro de tiempo
+                                        </button>
+                                    </h2>
+                                    <div id="ventaja3" class="accordion-collapse collapse" data-bs-parent="#ventajasAccordion">
+                                        <div class="accordion-body">
+                                            Obtén tu título profesional sin necesidad de realizar un trabajo de tesis o examen global.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-cesun text-white">
+                            <h3 class="h5 mb-0">Nuestros Evaluadores</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="evaluadoresCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="text-center">
+                                            <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Evaluador 1">
+                                            <h4>Dra. Laura Méndez</h4>
+                                            <p class="text-muted">Evaluadora Certificada EC0217</p>
+                                            <p>Especialista en evaluación de competencias docentes con más de 10 años de experiencia.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="text-center">
+                                            <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Evaluador 2">
+                                            <h4>Ing. Carlos Ruiz</h4>
+                                            <p class="text-muted">Evaluador Certificado EC0301</p>
+                                            <p>Experto en evaluación de competencias en el área de tecnologías de la información.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#evaluadoresCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#evaluadoresCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carreras Disponibles -->
+    <section class="py-5 bg-light" id="carreras">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-cesun">Carreras Disponibles</h2>
+                <p class="lead">Programas académicos que pueden optar por titulación por certificación</p>
+            </div>
+            
+            <ul class="nav nav-pills mb-4 justify-content-center flex-column flex-sm-row" id="carreras-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="administracion-tab" data-bs-toggle="pill" data-bs-target="#administracion" type="button">Administración</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contabilidad-tab" data-bs-toggle="pill" data-bs-target="#contabilidad" type="button">Contabilidad</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="informatica-tab" data-bs-toggle="pill" data-bs-target="#informatica" type="button">Informática</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="educacion-tab" data-bs-toggle="pill" data-bs-target="#educacion" type="button">Educación</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="carreras-tabContent">
+                <div class="tab-pane fade show active" id="administracion" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Administración de Empresas</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0217 - Impartición de cursos de formación del capital humano</li>
+                                        <li>EC0301 - Diseño de cursos de formación del capital humano</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Administración Financiera</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0076 - Análisis financiero</li>
+                                        <li>EC0217 - Impartición de cursos de formación</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Mercadotecnia</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0077 - Elaboración de estrategias de mercado</li>
+                                        <li>EC0301 - Diseño de cursos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Recursos Humanos</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0217 - Impartición de cursos</li>
+                                        <li>EC0078 - Administración del capital humano</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="contabilidad" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Contaduría Pública</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0076 - Análisis financiero</li>
+                                        <li>EC0079 - Auditoría interna</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Fiscal</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0080 - Elaboración de declaraciones fiscales</li>
+                                        <li>EC0081 - Asesoría fiscal</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Auditoría</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0079 - Auditoría interna</li>
+                                        <li>EC0082 - Control interno</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="informatica" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Informática Administrativa</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0301 - Diseño de cursos</li>
+                                        <li>EC0083 - Desarrollo de software</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Sistemas Computacionales</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0083 - Desarrollo de software</li>
+                                        <li>EC0084 - Administración de redes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Tecnologías de la Información</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0084 - Administración de redes</li>
+                                        <li>EC0085 - Seguridad informática</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="educacion" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Educación</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0217 - Impartición de cursos</li>
+                                        <li>EC0301 - Diseño de cursos</li>
+                                        <li>EC0086 - Evaluación del aprendizaje</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card card-certification h-100">
+                                <div class="card-body">
+                                    <h3 class="h5">Lic. en Pedagogía</h3>
+                                    <p>Certificaciones disponibles:</p>
+                                    <ul>
+                                        <li>EC0301 - Diseño de cursos</li>
+                                        <li>EC0086 - Evaluación del aprendizaje</li>
+                                        <li>EC0087 - Diseño curricular</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificaciones CONOCER -->
+    <section class="py-5" id="conocer">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-cesun">Certificaciones CONOCER</h2>
+                <p class="lead">Estándares de Competencia reconocidos oficialmente</p>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-header bg-cesun text-white">
+                            <h3 class="h5 mb-0">¿Qué es el CONOCER?</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>El Consejo Nacional de Normalización y Certificación de Competencias Laborales (CONOCER) es una entidad paraestatal del gobierno mexicano que promueve el Sistema Nacional de Competencias.</p>
+                            <p>Su objetivo es fortalecer la competitividad económica, el desarrollo educativo y el progreso social de México mediante el Sistema Nacional de Competencias.</p>
+                            <img src="https://via.placeholder.com/400x200?text=CONOCER+Logo" alt="CONOCER" class="img-fluid mt-3">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-header bg-cesun text-white">
+                            <h3 class="h5 mb-0">Beneficios de Certificarte</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i> Reconocimiento oficial de tus competencias laborales
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i> Mayor empleabilidad y movilidad laboral
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i> Posibilidad de titulación universitaria
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i> Mejores oportunidades de desarrollo profesional
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i> Validación de conocimientos y experiencia
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i> Certificación con validez nacional
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-cesun text-white">
+                    <h3 class="h5 mb-0">Estándares de Competencia Disponibles</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-nowrap">Código</th>
+                                    <th>Nombre del Estándar</th>
+                                    <th class="text-nowrap">Sector</th>
+                                    <th class="text-nowrap">Vigencia</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-nowrap fw-bold">EC0217</td>
+                                    <td>Impartición de cursos de formación del capital humano de manera presencial grupal</td>
+                                    <td class="text-nowrap">Educación</td>
+                                    <td class="text-nowrap">5 años</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap fw-bold">EC0301</td>
+                                    <td>Diseño de cursos de formación del capital humano de manera presencial grupal, sus instrumentos de evaluación y material didáctico</td>
+                                    <td class="text-nowrap">Educación</td>
+                                    <td class="text-nowrap">5 años</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap fw-bold">EC0076</td>
+                                    <td>Análisis financiero para la toma de decisiones</td>
+                                    <td class="text-nowrap">Finanzas</td>
+                                    <td class="text-nowrap">5 años</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap fw-bold">EC0077</td>
+                                    <td>Elaboración de estrategias de mercado considerando el comportamiento del consumidor y las tendencias del mercado</td>
+                                    <td class="text-nowrap">Mercadotecnia</td>
+                                    <td class="text-nowrap">5 años</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap fw-bold">EC0078</td>
+                                    <td>Administración del capital humano</td>
+                                    <td class="text-nowrap">Recursos Humanos</td>
+                                    <td class="text-nowrap">5 años</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap fw-bold">EC0079</td>
+                                    <td>Realización de auditorías internas</td>
+                                    <td class="text-nowrap">Contabilidad</td>
+                                    <td class="text-nowrap">5 años</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="py-5 bg-light" id="contacto">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-cesun">Contacto</h2>
+                <p class="lead">¿Tienes dudas sobre el proceso de titulación por certificación?</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <h3 class="h4 mb-4 text-cesun">Formulario de Contacto</h3>
+                            <form id="contactForm">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre completo</label>
+                                    <input type="text" class="form-control" id="nombre" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Correo electrónico</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    <input type="tel" class="form-control" id="telefono">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="carrera" class="form-label">Carrera de interés</label>
+                                    <select class="form-select" id="carrera">
+                                        <option selected>Selecciona una opción</option>
+                                        <option>Administración de Empresas</option>
+                                        <option>Contaduría Pública</option>
+                                        <option>Informática Administrativa</option>
+                                        <option>Educación</option>
+                                        <option>Otra</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mensaje" class="form-label">Mensaje</label>
+                                    <textarea class="form-control" id="mensaje" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-cesun">Enviar mensaje</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <h3 class="h4 mb-4 text-cesun">Información de Contacto</h3>
+                            <div class="mb-4">
+                                <h4 class="h5"><i class="fas fa-map-marker-alt text-cesun me-2"></i> Dirección</h4>
+                                <p>Av. Universidad 123, Col. Centro, Tijuana, B.C., México</p>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="h5"><i class="fas fa-phone-alt text-cesun me-2"></i> Teléfonos</h4>
+                                <p>+52 (664) 123-4567<br>+52 (664) 765-4321</p>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="h5"><i class="fas fa-envelope text-cesun me-2"></i> Correo Electrónico</h4>
+                                <p>titulacion@cesun.edu.mx<br>certificaciones@cesun.edu.mx</p>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="h5"><i class="fas fa-clock text-cesun me-2"></i> Horario de Atención</h4>
+                                <p>Lunes a Viernes: 9:00 am - 6:00 pm<br>Sábados: 9:00 am - 1:00 pm</p>
+                            </div>
+                            <div>
+                                <h4 class="h5"><i class="fas fa-map-marked-alt text-cesun me-2"></i> Ubicación</h4>
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3365.511119855963!2d-117.0387289245376!3d32.51496367364182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d9486c1a1b4f1d%3A0x7bf7e92715a81a3d!2sCentro%20de%20Ense%C3%B1anza%20T%C3%A9cnica%20y%20Superior%20(CETYS%20Universidad)!5e0!3m2!1ses!2smx!4v1689299639431!5m2!1ses!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <img src="https://via.placeholder.com/150x50?text=CESUN" alt="CESUN Universidad" class="mb-3" height="50">
+                    <p>Institución comprometida con la excelencia académica y la formación profesional de calidad.</p>
+                    <div class="mt-4 d-flex justify-content-center justify-content-lg-start">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h3 class="h5 text-white mb-4 text-center text-lg-start">Enlaces Rápidos</h3>
+                    <ul class="list-unstyled text-center text-lg-start">
+                        <li class="mb-2"><a href="#inicio" class="text-white text-decoration-none">Inicio</a></li>
+                        <li class="mb-2"><a href="#titulacion" class="text-white text-decoration-none">Titulación</a></li>
+                        <li class="mb-2"><a href="#centro-evaluador" class="text-white text-decoration-none">Centro Evaluador</a></li>
+                        <li class="mb-2"><a href="#carreras" class="text-white text-decoration-none">Carreras</a></li>
+                        <li class="mb-2"><a href="#conocer" class="text-white text-decoration-none">CONOCER</a></li>
+                        <li class="mb-2"><a href="#contacto" class="text-white text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="h5 text-white mb-4 text-center text-lg-start">Certificaciones</h3>
+                    <ul class="list-unstyled text-center text-lg-start">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Proceso de evaluación</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Estándares disponibles</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Costos y pagos</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Preguntas frecuentes</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Documentación requerida</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="h5 text-white mb-4 text-center text-lg-start">Newsletter</h3>
+                    <p class="text-center text-lg-start">Suscríbete para recibir información sobre convocatorias y noticias.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Tu correo electrónico">
+                            <button class="btn btn-cesun" type="submit">Suscribir</button>
+                        </div>
+                    </form>
+                    <p class="small text-center text-lg-start">Al suscribirte aceptas nuestra <a href="#" class="text-white">política de privacidad</a>.</p>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small mb-0">&copy; 2023 CESUN Universidad. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small mb-0">
+                        <a href="#" class="text-white text-decoration-none">Aviso de Privacidad</a> | 
+                        <a href="#" class="text-white text-decoration-none">Términos y Condiciones</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Button -->
+    <a href="#contacto" class="floating-btn">
+        <i class="fas fa-envelope"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            // Here you would typically send the data to a server
+            // For this example, we'll just show an alert
+            alert(`Gracias ${nombre}, tu mensaje ha sido enviado. Nos pondremos en contacto contigo pronto al correo ${email}.`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Change navbar style on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled', 'shadow-sm');
+            } else {
+                navbar.classList.remove('navbar-scrolled', 'shadow-sm');
+            }
+        });
+        
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+        
+        // Show success message if URL has ?success parameter
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success')) {
+                alert('Tu mensaje ha sido enviado con éxito. Nos pondremos en contacto contigo pronto.');
+            }
+        });
+        
+        // Mobile navigation improvements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse, {toggle: false});
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 992) {
+                        bsCollapse.hide();
+                    }
+                });
+            });
+            
+            // Add touch support for cards on mobile
+            if ('ontouchstart' in window) {
+                const cards = document.querySelectorAll('.card-certification');
+                cards.forEach(card => {
+                    card.addEventListener('touchstart', function() {
+                        this.style.transform = 'translateY(-5px)';
+                    });
+                    
+                    card.addEventListener('touchend', function() {
+                        this.style.transform = 'translateY(0)';
+                    });
+                });
+            }
+            
+            // Improve form experience on mobile
+            const formInputs = document.querySelectorAll('input, textarea, select');
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    // Prevent zoom on iOS
+                    if (window.innerWidth <= 768) {
+                        this.style.fontSize = '16px';
+                    }
+                });
+            });
+            
+            // Smooth scroll offset for fixed navbar
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const targetPosition = target.offsetTop - navbarHeight - 20;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Performance optimization for mobile
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                // Recalculate any dynamic elements if needed
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                document.documentElement.style.setProperty('--navbar-height', navbarHeight + 'px');
+            }, 250);
+        });
+    </script>
+</body>
+</html>
